@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="content-title">
+        <div class="filter-container">
+            <div>
+                <label for="filter-by">Filtrar por:</label>
+                <select id="filter-by">
+                    <option value="name">Nombre</option>
+                    <option value="status">Estado</option>
+                    <option value="species">Especie</option>
+                    <option value="type">Tipo</option>
+                    <option value="gender">Genero</option>
+                </select>
+            </div>
+            <select id="status-filter">
+                <option value="alive">Vivos</option>
+                <option value="dead">Muertos</option>
+                <option value="unknown">Desconocidos</option>
+            </select>
+            <select id="gender-filter">
+                <option value="female">Mujer</option>
+                <option value="male">Hombre</option>
+                <option value="genderless">Ni idea</option>
+                <option value="unknown">Desconocido</option>
+            </select>
+        </div>
+
+        <div class="search">            
+            <input type="search" id="search" autocomplete="off">
+            <div class="listSearch">
+                
+            </div>
+        </div>
+
+    </header>
+    <main class="content-cards">
+        
+    </main>
+    <div class="modal">
+        
+    </div>
+    <script src="character.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
