@@ -12,18 +12,18 @@ let parameters = '';
 function showStatusGender(query){
     search.setAttribute('disabled','true');
     if (query == 'status') {
-        filterStatus.style.display = 'flex';
-        filterGender.style.display = 'none';
+        filterStatus.removeAttribute('disabled');
+        filterGender.setAttribute('disabled','true');
     }else{
-        filterStatus.style.display = 'none';
-        filterGender.style.display = 'flex';
+        filterGender.removeAttribute('disabled');
+        filterStatus.setAttribute('disabled','true');
     }
 }
 
 function ocultarStatusGender(){
     search.removeAttribute('disabled');
-    filterStatus.style.display = 'none';
-    filterGender.style.display = 'none';
+    filterGender.setAttribute('disabled','true');
+    filterStatus.setAttribute('disabled','true');
 }
 
 async function fetchCharacter(query,parameters,callback){
