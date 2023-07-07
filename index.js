@@ -9,7 +9,6 @@ const listSearch = document.querySelector('.listSearch');
 let query = 'name';
 let parameters = '';
 
-
 function showStatusGender(query){
     search.setAttribute('disabled','true');
     if (query == 'status') {
@@ -29,6 +28,11 @@ function ocultarStatusGender(){
 
 async function fetchCharacter(query,parameters,callback){
     try {
+        if (!parameters) {
+            listSearch.innerHTML = '';
+            contentCards.innerHTML = '';
+            return;
+        }
         const result = await     fetch(`https://rickandmortyapi.com/api/character?${query}=${parameters}`)
         const data = await result.json();
         callback(data.results);
@@ -105,21 +109,21 @@ function showAutoComplete(result){
         const cards = document.createElement('div');
         cards.classList.add('item-search');
         cards.innerHTML = `        
-        <div class="contain-img">
-        <img src="${data.image}" alt="" class="img-personaje">
+        <div class="contain-img-list">
+            <img src="${data.image}" alt="" class="img-personaje-list">
         </div>
-        <div class="contain-dataPersonaje">
-        <h3 class="name">
-        ${data.name}<br>
-        <span class="status-species">${data.status} - ${data.species}</span>
-        </h3>
-        <div class="last-location">
-        <span class="first-last-ubication">ultima ubicaion conocida:</span><br>
-        ${data.location.name}
-        </div>
-        <div class="first-aparicion">
-        <span class="first-last-ubication">Visto por primera vez en:</span><br>
+        <div class="contain-dataPersonaje-list">
+            <h3 class="name">
                 ${data.name}
+                <span>${data.status} - ${data.species}</span>
+            </h3>
+            <div class="last-location-list">
+                <span>ultima ubicaion conocida:</span><br>
+                ${data.location.name}
+            </div>
+            <div class="first-aparicion-list">
+                <span class="first-last-ubication-list">Visto por primera vez en:</span><br>
+                    ${data.name}
             </div>
         </div>`
         cards.addEventListener('click',()=>{viewCharacter(data)})
@@ -132,14 +136,16 @@ select.addEventListener('change',()=>{
     search.value = '';
     contentCards.innerHTML = '';
     query = select.value;
-    if (query === 'status' || query === 'gender') {
+    if (query !== 'name') {
         showStatusGender(query);
+        parameters = (query == 'status')? 'alive' : (query == 'gender') ? 'male' : '';
+        fetchCharacter(query,parameters,showData);
     }else{
         ocultarStatusGender();
     }
 });
 
-search.addEventListener('keydown',(e)=>{
+search.addEventListener('keyup',(e)=>{
     fetchCharacter(query,search.value,showAutoComplete)
 });
 
