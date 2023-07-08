@@ -1,3 +1,10 @@
+:root{
+    --blue-dark: rgb(39, 43, 51);
+    --black-bajo: #0007;
+    --blue-light : rgb(18, 249, 187);
+    --blue: rgb(240, 159, 38);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -7,7 +14,6 @@
     font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
 }
 body{
-    background: #eeeeea;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,7 +25,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(39, 43, 51);
+    background: var(--blue-dark);
+    color: #fff;
 }
 .filter-container{
     width: 100%;
@@ -29,19 +36,19 @@ body{
     align-items: center;
     gap: 20px;
     margin: 20px 0;
-    color: #fff;
     flex-wrap: wrap;
+    font-size: 1.5em;
 }
-
 
 #filter-by, #status-filter, #gender-filter{
-    font-size: 1.5em;
+    font-size: 1em;
     width: 150px;
-    background: #0003;
+    background: var(--black-bajo);
     color: #fff;
     cursor: pointer;
+    border-radius: 10px;
+    border: 3px double var(--blue-light);
 }
-
 
 .search{
     width: 500px;
@@ -51,8 +58,12 @@ body{
     width: 100%;
     height: 50px;
     font-size: 1.5em;
-    background: #0003;
+    background: var(--black-bajo);
     color: #fff;
+    border-radius: 10px;
+}
+.search input:focus{
+    border: 3px solid var(--blue-light);
 }
 
 .search input:disabled{
@@ -69,16 +80,21 @@ body{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    padding: 0 5px;
+    padding: 0 0 0 5px;
     z-index: 100;
 }
 
 .listSearch::-webkit-scrollbar{
-    display: none;
+    background: rgb(0, 0, 0);
+    width: 5px;
 }
-.item-search{
+.listSearch::-webkit-scrollbar-thumb{
+    background: #fff;
+    border-radius: 10px;
+}
+.item-search {
     height: 150px;
-    background: rgb(126, 135, 150);
+    background: var(--blue-dark);
     display: flex;
 }
 
@@ -109,7 +125,7 @@ body{
 .content-cards{
     width: 100%;
     min-height: calc(100vh - 180px);
-    background: rgb(26, 27, 27);
+    background: var(--blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,13 +133,14 @@ body{
     position: relative;
 }
 .cards-personajes{
+    cursor: pointer;
     height: 220px;
     width: 600px;
-    background: rgb(60, 62, 68);
+    background: var(--blue-dark);
     margin: 0.75rem;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 2px 0 #000;
+    box-shadow: 0 0 15px 0 #000;
     color: #ffffff;
     display: flex;
 }
@@ -144,14 +161,15 @@ body{
     justify-content: space-around;
 }
 
-.contain-dataPersonaje .name{
+.name{
     font-size: 1.5em;
+    position: relative;
 }
 .status-species{
     font-size: .7em;
 }
-.first-last-ubication{
-    color: #aaaaaa;
+.first-last-ubication, .last-location-list,.genero{
+    color: var(--blue-light);
 }
 
 
@@ -167,7 +185,7 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    background: #000;
+    background: var(--blue-dark);
     z-index: 200;
 }
 
@@ -175,8 +193,63 @@ body{
     width: 400px;
     height: 400px;
 }
+.modal .contain-img img{
+    border-radius: 100px;
+}
 .modal .contain-dataPersonaje{
     width: 100%;
     text-align: center;
     color: #fff;
+}
+.exit{
+    width: 200px;
+    margin-top: 10px;
+    color: var(--blue-dark);
+    background: var(--blue-light);
+    border-radius: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.exit:hover{
+    color: var(--blue-light);
+    background: var(--blue-dark);
+    border: 1px solid var(--blue-light);
+}
+
+.alive{
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a7;
+}
+.dead{
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #d45;
+}
+.unknown{
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #888;
+}
+
+
+.error{
+    font-size: 2em;
 }
