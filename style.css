@@ -2,7 +2,7 @@
     --blue-dark: rgb(39, 43, 51);
     --black-bajo: #0007;
     --blue-light : rgb(18, 249, 187);
-    --blue: rgb(240, 159, 38);
+    --orange: rgb(240, 159, 38);
 }
 
 *{
@@ -18,16 +18,22 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--blue-light);
 }
 .content-title{
     width: 100%;
-    height: 180px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: var(--blue-dark);
     color: #fff;
 }
+.content-title h1{
+    font-size: 2em;
+    padding: 20px 0;
+}
+
 .filter-container{
     width: 100%;
     padding: 0 10px;
@@ -124,8 +130,6 @@ body{
 
 .content-cards{
     width: 100%;
-    min-height: calc(100vh - 180px);
-    background: var(--blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,7 +138,7 @@ body{
 }
 .cards-personajes{
     cursor: pointer;
-    height: 220px;
+    height: 250px;
     width: 600px;
     background: var(--blue-dark);
     margin: 0.75rem;
@@ -251,5 +255,11 @@ body{
 
 
 .error{
-    font-size: 2em;
+    margin-top: 50px;
+    font-size: 1.8em;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: var(--blue-dark);
+    padding: 5px;
+    border-radius: 10px;
 }
